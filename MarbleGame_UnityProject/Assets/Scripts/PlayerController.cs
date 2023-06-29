@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [SerializeField] GameObject board;
-    [SerializeField] GameObject ball;
+    [SerializeField] GameObject marble;
     [SerializeField] GameObject[] sides;
 
     [Space]
@@ -21,6 +21,13 @@ public class PlayerController : MonoBehaviour
     [Space]
 
     [SerializeField] bool playerActive;
+
+    [Range(-1f, 1f)]
+    [SerializeField] float WS;
+
+    [Range(-1f, 1f)]
+    [SerializeField] float AD;
+
     [SerializeField] float MAXTILT;
     [SerializeField] float TILTSPEED;
 
@@ -40,108 +47,56 @@ public class PlayerController : MonoBehaviour
             TiltBoard(GetNearestSide());
 
         }
+
+        WS = Input.GetAxis("WS");
+        AD = Input.GetAxis("AD");
     }
 
     private void TiltBoard(GameObject nearestSide)
     {
-        if(nearestSide.tag == "Side (1)")
+        float cameraX = VC1.transform.position.x;
+        float cameraZ = VC1.transform.position.z;
+
+        float marbleX = marble.transform.position.x;
+        float marbleZ = marble.transform.position.z;
+
+        float diffX = cameraX - marbleX;
+        float diffZ = cameraZ - marbleZ;
+
+        float diffXAbs = Mathf.Abs(Mathf.Abs(VC1.transform.position.x) - Mathf.Abs(marble.transform.position.x));
+        float diffZAbs = Mathf.Abs(Mathf.Abs(VC1.transform.position.z) - Mathf.Abs(marble.transform.position.z));
+
+        //side 1
+        if (diffZAbs >= diffXAbs && diffZ > 0)
         {
-            //x positive
-            if (Input.GetKey(KeyCode.W))
-            {
-                board.transform.Rotate(-TILTSPEED * Time.deltaTime, 0, 0);
-            }
-            //x negative
-            if (Input.GetKey(KeyCode.S))
-            {
-                board.transform.Rotate(TILTSPEED * Time.deltaTime, 0, 0);
-            }
-            //z positive
-            if (Input.GetKey(KeyCode.A))
-            {
-                board.transform.Rotate(0, 0, -TILTSPEED * Time.deltaTime);
-            }
-            //z negative
-            if (Input.GetKey(KeyCode.D))
-            {
-                board.transform.Rotate(0, 0, TILTSPEED * Time.deltaTime);
-            }
+            Debug.Log("Side 1");
+            board.transform.Rotate(WS * TILTSPEED * Time.deltaTime, 0, 0);
+            board.transform.Rotate(0, 0, AD * TILTSPEED * Time.deltaTime);
         }
 
         //side 2
-        if (nearestSide.tag == "Side (2)")
+        if (diffZAbs <= diffXAbs && diffX < 0)
         {
-            //x positive
-            if (Input.GetKey(KeyCode.W))
-            {
-                board.transform.Rotate(0, 0, -TILTSPEED * Time.deltaTime);
-            }
-            //x negative
-            if (Input.GetKey(KeyCode.S))
-            {
-                board.transform.Rotate(0, 0, TILTSPEED * Time.deltaTime);
-            }
-            //z positive
-            if (Input.GetKey(KeyCode.A))
-            {
-                board.transform.Rotate(TILTSPEED * Time.deltaTime, 0, 0);
-            }
-            //z negative
-            if (Input.GetKey(KeyCode.D))
-            {
-                board.transform.Rotate(-TILTSPEED * Time.deltaTime, 0, 0);
-            }
+            Debug.Log("Side 2");
+            board.transform.Rotate(0, 0, WS * TILTSPEED * Time.deltaTime);
+            board.transform.Rotate(-AD * TILTSPEED * Time.deltaTime, 0, 0);            
         }
 
 
         //side 3
-        if (nearestSide.tag == "Side (3)")
+        if (diffZAbs >= diffXAbs && diffZ < 0)
         {
-            //x positive
-            if (Input.GetKey(KeyCode.W))
-            {
-                board.transform.Rotate(TILTSPEED * Time.deltaTime, 0, 0);
-            }
-            //x negative
-            if (Input.GetKey(KeyCode.S))
-            {
-                board.transform.Rotate(-TILTSPEED * Time.deltaTime, 0, 0);
-            }
-            //z positive
-            if (Input.GetKey(KeyCode.A))
-            {
-                board.transform.Rotate(0, 0, TILTSPEED * Time.deltaTime);
-            }
-            //z negative
-            if (Input.GetKey(KeyCode.D))
-            {
-                board.transform.Rotate(0, 0, -TILTSPEED * Time.deltaTime);
-            }
+            Debug.Log("Side 3");
+            board.transform.Rotate(-WS * TILTSPEED * Time.deltaTime, 0, 0);
+            board.transform.Rotate(0, 0, -AD * TILTSPEED * Time.deltaTime);
         }
 
         //side 4
-        if (nearestSide.tag == "Side (4)")
+        if (diffZAbs <= diffXAbs && diffX > 0)
         {
-            //x positive
-            if (Input.GetKey(KeyCode.W))
-            {
-                board.transform.Rotate(0, 0, TILTSPEED * Time.deltaTime);
-            }
-            //x negative
-            if (Input.GetKey(KeyCode.S))
-            {
-                board.transform.Rotate(0, 0, -TILTSPEED * Time.deltaTime);
-            }
-            //z positive
-            if (Input.GetKey(KeyCode.A))
-            {
-                board.transform.Rotate(-TILTSPEED * Time.deltaTime, 0, 0);
-            }
-            //z negative
-            if (Input.GetKey(KeyCode.D))
-            {
-                board.transform.Rotate(TILTSPEED * Time.deltaTime, 0, 0);
-            }
+            Debug.Log("Side 4");
+            board.transform.Rotate(0, 0, -WS * TILTSPEED * Time.deltaTime);
+            board.transform.Rotate(AD * TILTSPEED * Time.deltaTime, 0, 0);
         }
 
     }
@@ -162,7 +117,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Debug.Log(output);
+        //Debug.Log(output);
         return output;
     }
 }
