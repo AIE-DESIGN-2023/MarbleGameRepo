@@ -17,6 +17,7 @@ public class DeathBoxScript : MonoBehaviour
         {
             //reset marble position
             marble.transform.position = gameController.spawnPosition.transform.position;
+            marble.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
             //reset board rotation
             board.transform.rotation = Quaternion.identity;

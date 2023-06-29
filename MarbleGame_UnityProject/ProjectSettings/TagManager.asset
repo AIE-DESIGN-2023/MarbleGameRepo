@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Marble
   - Board
+  - Side (1)
+  - Side (2)
+  - Side (3)
+  - Side (4)
   layers:
   - Default
   - TransparentFX
