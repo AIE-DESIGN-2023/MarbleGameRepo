@@ -16,7 +16,10 @@ public class DeathBoxScript : MonoBehaviour
         if (other.tag == marbleTag)
         {
             //reset marble position
+            marble.transform.position = gameController.spawnPosition.transform.position;
 
+            //reset board rotation
+            board.transform.rotation = Quaternion.identity;
         }
     }
 }
