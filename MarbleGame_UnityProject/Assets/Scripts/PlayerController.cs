@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -82,6 +81,17 @@ public class PlayerController : MonoBehaviour
                 {
                     
                 }*/
+            }
+
+            if(Input.GetKey(KeyCode.LeftArrow))
+            {
+                board.transform.Rotate(0, TILTSPEED * Time.deltaTime, 0);
+            }
+
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                board.transform.Rotate(0, TILTSPEED * Time.deltaTime, 0);
             }
         }
     }
