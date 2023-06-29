@@ -23,14 +23,14 @@ public class GameController : MonoBehaviour
     [Space]
     [Header("Spawn Point")]
     [Space]
-    [SerializeField] Vector3 spawnPosition;
+    [SerializeField] public GameObject spawnPosition;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //SetMarblePosition
-        marble.transform.position = spawnPosition;
+        marble.transform.position = spawnPosition.transform.position;
     }
 
     // Update is called once per frame
