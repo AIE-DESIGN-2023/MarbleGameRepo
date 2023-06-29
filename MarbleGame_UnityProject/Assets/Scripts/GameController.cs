@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     {
         //SetMarblePosition
         marble.transform.position = spawnPosition.transform.position;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
