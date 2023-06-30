@@ -1453,10 +1453,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4709738784876203998, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709738784876203998, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709738784876203998, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 503191b49a2d1eb459faf8f2594776fa, type: 3}
+    - target: {fileID: 5995132726427214533, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+      propertyPath: maxMagnitude
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5995132726427214533, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
       propertyPath: audioListener
       value: 
       objectReference: {fileID: 1996907635}
+    - target: {fileID: 9038905756023452868, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
 --- !u!1001 &1556617164176507430
@@ -1658,11 +1678,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 923326686919129419, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008476966
+      value: 0.00000000847696
       objectReference: {fileID: 0}
     - target: {fileID: 923326686919129419, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000001468327
+      value: -0.0000000014683263
       objectReference: {fileID: 0}
     - target: {fileID: 3420070495784427673, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_Follow
@@ -1774,15 +1794,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6870931762445499397, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17642453
+      value: 0.17642455
       objectReference: {fileID: 0}
     - target: {fileID: 6870931762445499397, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000062752687
+      value: -0.000000014003738
       objectReference: {fileID: 0}
     - target: {fileID: 6870931762445499397, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000001124754
+      value: 0.0000000025099745
       objectReference: {fileID: 0}
     - target: {fileID: 7040891718654497131, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_XAxis.m_InvertInput
