@@ -27,6 +27,8 @@ public class Button : MonoBehaviour
         {
             GetComponent<Renderer>().material = buttonActiveColour;
             gate.gameObject.SetActive(false);
+
+            StartCoroutine("PressurePlate");
         }
 
         if (collision.gameObject.tag == "Marble")
