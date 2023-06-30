@@ -20,8 +20,14 @@ public class MarbleController : MonoBehaviour
     [Space]
     [Header("Impacts")]
     [SerializeField] AudioClip tempClip;
-    [SerializeField] List<AudioClip> wallWoodImpacts;
-    [SerializeField] List<AudioClip> wallGlassImpacts;
+    [Space]
+    [SerializeField] List<AudioClip> wallWoodImpactsSoft;
+    [SerializeField] List<AudioClip> wallWoodImpactsMedium;
+    [SerializeField] List<AudioClip> wallWoodImpactsHard;
+    [SerializeField] List<AudioClip> wallGlassImpactsSoft;
+    [SerializeField] List<AudioClip> wallGlassImpactsMedium;
+    [SerializeField] List<AudioClip> wallGlassImpactsHard;
+
 
     [Space]
     [Header("Tags")]
@@ -30,7 +36,26 @@ public class MarbleController : MonoBehaviour
     [SerializeField] string FLOORWOODTAG;
     [SerializeField] string FLOORGLASSTAG;
 
+    [Space]
+    [Header("Marble Variables")]
+    [SerializeField] float marbleMagnitude;
+    [SerializeField] float maxMagnitude;
 
+    //update
+    private void Update()
+    {
+        //get marble magnitude
+        marbleMagnitude = Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z);
+        
+        //clamp marble magnitude
+        marbleMagnitude = Mathf.Clamp(marbleMagnitude, 0, maxMagnitude);
+
+        //divide marble magnitude by max
+        marbleMagnitude = marbleMagnitude / maxMagnitude;
+
+        //apply marble magnitude
+        rollingSource.volume = marbleMagnitude;
+    }
 
     //impact sounds
     private void OnCollisionEnter(Collision collision)
@@ -38,7 +63,7 @@ public class MarbleController : MonoBehaviour
         //wood wall
         if(collision.gameObject.tag == WALLWOODTAG)
         {
-            Debug.Log("wood impact");
+            //
         }
 
 
