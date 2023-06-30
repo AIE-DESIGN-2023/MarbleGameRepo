@@ -7,6 +7,7 @@ public class Button : MonoBehaviour
 
     public GameObject gate;
     public Material buttonActiveColour;
+    public Material pressurePlateMat;
     public bool isPressurePlate;
     public int pressurePlateTiming;
    
@@ -42,5 +43,6 @@ public class Button : MonoBehaviour
     {
         yield return new WaitForSeconds(pressurePlateTiming);
         gate.gameObject.SetActive(true);
+        GetComponent<Renderer>().material = pressurePlateMat;
     }
 }
