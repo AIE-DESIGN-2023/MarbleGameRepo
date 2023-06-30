@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject board;
     [SerializeField] GameObject marble;
-    [SerializeField] GameObject[] sides;
 
     [Space]
     [Header("Variables")]
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
         WS = Input.GetAxis("WS");
         AD = Input.GetAxis("AD");
-        Debug.Log(Input.mouseScrollDelta.y);
+        //Debug.Log(Input.mouseScrollDelta.y);
     }
 
     private void CameraControl()
@@ -139,7 +138,7 @@ public class PlayerController : MonoBehaviour
         //side 1
         if (diffZAbs >= diffXAbs && diffZ > 0)
         {
-            Debug.Log("Side 1");
+            //Debug.Log("Side 1");
             board.transform.Rotate(WS * TILTSPEED * Time.deltaTime, 0, 0);
             board.transform.Rotate(0, 0, AD * TILTSPEED * Time.deltaTime);
         }
@@ -147,7 +146,7 @@ public class PlayerController : MonoBehaviour
         //side 2
         if (diffZAbs <= diffXAbs && diffX < 0)
         {
-            Debug.Log("Side 2");
+            //Debug.Log("Side 2");
             board.transform.Rotate(0, 0, WS * TILTSPEED * Time.deltaTime);
             board.transform.Rotate(-AD * TILTSPEED * Time.deltaTime, 0, 0);            
         }
@@ -156,7 +155,7 @@ public class PlayerController : MonoBehaviour
         //side 3
         if (diffZAbs >= diffXAbs && diffZ < 0)
         {
-            Debug.Log("Side 3");
+            //Debug.Log("Side 3");
             board.transform.Rotate(-WS * TILTSPEED * Time.deltaTime, 0, 0);
             board.transform.Rotate(0, 0, -AD * TILTSPEED * Time.deltaTime);
         }
@@ -164,7 +163,7 @@ public class PlayerController : MonoBehaviour
         //side 4
         if (diffZAbs <= diffXAbs && diffX > 0)
         {
-            Debug.Log("Side 4");
+            //Debug.Log("Side 4");
             board.transform.Rotate(0, 0, -WS * TILTSPEED * Time.deltaTime);
             board.transform.Rotate(AD * TILTSPEED * Time.deltaTime, 0, 0);
         }
