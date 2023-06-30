@@ -44,14 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3aa3347bcf53df4aa3d9666be193678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VC1: {fileID: 0}
+  cameras:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  activeCam: {fileID: 0}
+  canChangeCamera: 1
+  canChangeCameraTimer: 0
+  canChangeCameraTimeLimit: 0.9
+  cameraPriority1: 1
+  cameraPriority0: 0
+  activeCamIndex: 0
+  activeCamValue: 0
   board: {fileID: 0}
-  ball: {fileID: 0}
+  marble: {fileID: 0}
   sides:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   playerActive: 1
+  WS: 0
+  AD: 0
   MAXTILT: 20
   TILTSPEED: 10
