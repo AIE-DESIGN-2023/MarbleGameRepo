@@ -17,17 +17,18 @@ public class MarbleController : MonoBehaviour
     [Space]
     [Space]
     [Header("Rolling")]
-    [SerializeField] bool isGrounded = false;
-    [SerializeField] bool hasGroundImpactPlayed = false;
-    [SerializeField] float groundImpactTimer;
-    [SerializeField] float groundImpactWaitTime;
     [SerializeField] float rollingAudioDecreaseSpeed;
     [SerializeField] AudioClip rollingWood;
+    [SerializeField] bool isGrounded = false;
+    
     [Space]
     [Header("Impacts")]
     [Space]
     [SerializeField] float softThreshold;
     [SerializeField] float hardThreshold;
+    [SerializeField] bool hasGroundImpactPlayed = false;
+    [SerializeField] float groundImpactTimer;
+    [SerializeField] float groundImpactWaitTime;
     [Space]
     [SerializeField] AudioClip tempClip;
     [Space]
@@ -56,7 +57,11 @@ public class MarbleController : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         rollingSource.clip = rollingWood;
+
+        
     }
 
     //update
@@ -66,9 +71,14 @@ public class MarbleController : MonoBehaviour
 
         if (isGrounded)
         {
+            if(!rollingSource.isPlaying)
+            {
+                rollingSource.Play();
+            }
+
             //apply marble magnitude
             rollingSource.volume = marbleMagnitude;
-            rollingSource.pitch = pitchVariation+pitchOffset;
+            //rollingSource.pitch = pitchVariation+pitchOffset;
 
             //floor impact
             if(!hasGroundImpactPlayed)
@@ -127,7 +137,7 @@ public class MarbleController : MonoBehaviour
 
 
         //glass wall
-        if (collision.gameObject.tag == WALLWOODTAG)
+        if (collision.gameObject.tag == WALLGLASSTAG)
         {
 
         }
