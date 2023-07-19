@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MarbleController : MonoBehaviour
@@ -16,9 +17,19 @@ public class MarbleController : MonoBehaviour
     [Space]
     [Space]
     [Header("Rolling")]
+    [SerializeField] float rollingAudioDecreaseSpeed;
     [SerializeField] AudioClip rollingWood;
+    [SerializeField] bool isGrounded = false;
+    
     [Space]
     [Header("Impacts")]
+    [Space]
+    [SerializeField] float softThreshold;
+    [SerializeField] float hardThreshold;
+    [SerializeField] bool hasGroundImpactPlayed = false;
+    [SerializeField] float groundImpactTimer;
+    [SerializeField] float groundImpactWaitTime;
+    [Space]
     [SerializeField] AudioClip tempClip;
     [Space]
     [SerializeField] List<AudioClip> wallWoodImpactsSoft;
@@ -40,38 +51,136 @@ public class MarbleController : MonoBehaviour
     [Header("Marble Variables")]
     [SerializeField] float marbleMagnitude;
     [SerializeField] float maxMagnitude;
+    [SerializeField] float pitchOffset;
+    [SerializeField] float pitchVariation;
+    [SerializeField] float pitchMaxVariation;
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        rollingSource.clip = rollingWood;
+
+        
+    }
 
     //update
     private void Update()
     {
+        VolumneCalculator();
+
+        if (isGrounded)
+        {
+            if(!rollingSource.isPlaying)
+            {
+                rollingSource.Play();
+            }
+
+            //apply marble magnitude
+            rollingSource.volume = marbleMagnitude;
+            //rollingSource.pitch = pitchVariation+pitchOffset;
+
+            //floor impact
+            if(!hasGroundImpactPlayed)
+            {
+                hasGroundImpactPlayed = true;
+
+                GetWoodImpactClip();
+
+                //set volume
+                impactSource.volume = 1;
+                //play clip
+                impactSource.Play();
+            }
+        }
+        else
+        {
+            rollingSource.volume -= Time.deltaTime * rollingAudioDecreaseSpeed;
+            groundImpactTimer -= Time.deltaTime;
+        }
+
+        if(groundImpactTimer < 0 && !isGrounded)
+        {
+            hasGroundImpactPlayed = false;
+        }
+    }
+
+    private void GetWoodImpactClip()
+    {
+        if (marbleMagnitude > hardThreshold)
+        {
+            Debug.Log("PLAY HARD WOOD WALL SOUND");
+            impactSource.clip = wallWoodImpactsHard[Random.Range(0, wallWoodImpactsHard.Count)];
+        }
+        else if (marbleMagnitude > softThreshold && marbleMagnitude < hardThreshold)
+        {
+            Debug.Log("PLAY MEDIUM WOOD WALL SOUND");
+            impactSource.clip = wallWoodImpactsMedium[Random.Range(0, wallWoodImpactsMedium.Count)];
+        }
+        else if (marbleMagnitude < softThreshold)
+        {
+            Debug.Log("Play soft sound");
+            impactSource.clip = wallWoodImpactsSoft[Random.Range(0, wallWoodImpactsSoft.Count)];
+        }
+    }
+
+    //on collision enter
+    private void OnCollisionEnter(Collision collision)
+    {
+        //wood wall
+        if(collision.gameObject.tag == WALLWOODTAG)
+        {
+            Debug.Log("WALL WOOD TAG COLLISION ENTER");
+            GetWoodImpactClip();
+            PlayImpact();
+        }
+
+
+        //glass wall
+        if (collision.gameObject.tag == WALLGLASSTAG)
+        {
+
+        }
+
+        //floor wood
+        if (collision.gameObject.tag == FLOORWOODTAG)
+        {
+            Debug.Log("FLOOR WOOD TAG ENTER");
+            isGrounded = true;
+        }
+    }
+
+    private void PlayImpact()
+    {
+        //set volume
+        impactSource.volume = marbleMagnitude;
+        //play clip
+        impactSource.Play();
+    }
+
+    private void VolumneCalculator()
+    {
         //get marble magnitude
         marbleMagnitude = Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z);
-        
+
         //clamp marble magnitude
         marbleMagnitude = Mathf.Clamp(marbleMagnitude, 0, maxMagnitude);
 
         //divide marble magnitude by max
         marbleMagnitude = marbleMagnitude / maxMagnitude;
 
-        //apply marble magnitude
-        rollingSource.volume = marbleMagnitude;
+        //calculate pitch variation
+        pitchVariation = (marbleMagnitude - 0.5f);
     }
 
-    //impact sounds
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
-        //wood wall
-        if(collision.gameObject.tag == WALLWOODTAG)
+        //wood floor
+        if (collision.gameObject.tag == FLOORWOODTAG)
         {
-            //
+            Debug.Log("FLOOR WOOD TAG EXIT");
+            isGrounded = false;
+            groundImpactTimer = groundImpactWaitTime;
         }
-
-
-        //glass wall
-        if (collision.gameObject.tag == WALLWOODTAG)
-        {
-
-        }
-
     }
 }

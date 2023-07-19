@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3332107979862494311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4667034834797008767}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4667034834797008767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3332107979862494311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 844104298364992133}
+  m_Father: {fileID: 3858834028190729732}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3858834028190729730
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +44,7 @@ GameObject:
   - component: {fileID: 3858834028190729731}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: PlayerController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +60,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4667034834797008767}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,23 +81,100 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  holeCams:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  board: {fileID: 0}
+  spawnPos: {fileID: 0}
+  gameControllerPrefab: {fileID: 4133107978357454784, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
+  marblePrefab: {fileID: 4336677688136593896, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+  marble: {fileID: 0}
+  gameController: {fileID: 0}
   activeCam: {fileID: 0}
+  activeCamIndex: 0
+  cameraLock: 0
+  cameraSpeedMax: 300
+  cameraSpeedMin: 0
   canChangeCamera: 1
   canChangeCameraTimer: 0
   canChangeCameraTimeLimit: 0.9
   cameraPriority1: 1
   cameraPriority0: 0
-  activeCamIndex: 0
   activeCamValue: 0
-  board: {fileID: 0}
-  marble: {fileID: 0}
-  sides:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  y_tracker: 0
+  y_mouseAxis: 0
+  VC1_ydefault: 2.25
+  VC1_ydiff: 1
+  VC2_ydefault: 2.5
+  VC2_ydiff: 1.5
+  VC3_ydefault: 5
+  VC3_ydiff: 3
   playerActive: 1
   WS: 0
   AD: 0
-  MAXTILT: 20
   TILTSPEED: 10
+  currentRot: {x: 0, y: 0, z: 0}
+  targetRot: {x: 0, y: 0, z: 0}
+  moveTimer: 0
+  MOVETIMEAMOUNT: 0.005
+--- !u!1 &6063924081362476485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 844104298364992133}
+  - component: {fileID: 8552963000139412398}
+  - component: {fileID: 5023463030368804835}
+  m_Layer: 0
+  m_Name: DeathBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &844104298364992133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063924081362476485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -36.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4667034834797008767}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8552963000139412398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063924081362476485}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 500, y: 1, z: 500}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5023463030368804835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063924081362476485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ce3501829b51647a61cb3ced66342c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 3858834028190729731}
+  marbleTag: Marble

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -9,34 +11,65 @@ public class GameController : MonoBehaviour
     [Header("Gameobjects")]
     [Space]
     [SerializeField] PlayerController playerController;
-    [SerializeField] GameObject board;
-    [SerializeField] GameObject marble;
-
-/*    [Space]
-    [Header("Colliders")]
-    [Space]
-    [SerializeField] BoxCollider nextLevelCollider1;
-    [SerializeField] BoxCollider nextLevelCollider2;
-    [SerializeField] BoxCollider nextLevelCollider3;
-    [SerializeField] BoxCollider deathBox;*/
 
     [Space]
-    [Header("Spawn Point")]
+    [Header("Level Variables")]
     [Space]
-    [SerializeField] public GameObject spawnPosition;
+    [SerializeField] public bool hasBeatenLevel;
+    [SerializeField] public bool reachedBeatenLevelHitbox;
+    [SerializeField] public int sceneIndex;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //SetMarblePosition
-        marble.transform.position = spawnPosition.transform.position;
+        
+        DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!playerController)
+        {
+            playerController = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<PlayerController>();
+        }
+
+
+        if (reachedBeatenLevelHitbox)
+        {
+            reachedBeatenLevelHitbox = false;
+            StartCoroutine("LevelTransition");
+        }
+    }
+
+    public IEnumerator LevelTransition()
+    {
+        //remove player control
+        playerController.playerActive = false;
+
+        //reset hole cams
+        foreach (GameObject holeCam in playerController.holeCams)
+        {
+            holeCam.GetComponent<CinemachineVirtualCamera>().Priority = 0;
+        }
+
+        //freeze marble position
+        playerController.marble.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+
+        //load new level
+        SceneManager.LoadScene(sceneIndex++);
+
+        //move marble to new prespawn location
+
+
+        //reset marble spin and rotation
+
+
+        //unfreeze marble
+
+
+        yield return new WaitForSeconds(1f);
     }
 }

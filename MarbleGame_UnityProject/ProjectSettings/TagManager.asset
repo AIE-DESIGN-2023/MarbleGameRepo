@@ -14,6 +14,7 @@ TagManager:
   - Wall Glass
   - Floor Wood
   - Floor Glass
+  - PlayerController
   layers:
   - Default
   - TransparentFX

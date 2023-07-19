@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class MarbleInHoleScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] string marbleTag;
+    [SerializeField] GameObject VC4;
+    [SerializeField] int priorityOn;
+    [SerializeField] int priorityOff;
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag == marbleTag)
+        {
+            VC4.GetComponent<CinemachineVirtualCamera>().Priority = priorityOn;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.tag == "Marble")
+        {
+            VC4.GetComponent<CinemachineVirtualCamera>().Priority = priorityOff;
+        }
     }
 }
