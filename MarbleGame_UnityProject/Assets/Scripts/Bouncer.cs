@@ -18,20 +18,33 @@ public class Bouncer : MonoBehaviour
         }
 
         bounceDirection = marble.transform.position - transform.position;
-        //bounceDirection *= bounceSpeed;
-
+        bounceDirection *= bounceSpeed;
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision BOuncer / Marble");
 
         Debug.Log("Bounce Direction: " + bounceDirection);
 
-
-/*        bounceVector = new Vector3(bounceDirection.x * bounceSpeed, bounceDirection.y * bounceSpeed, bounceDirection.z * bounceSpeed);
-        Debug.Log("Bounce Vector: " + bounceVector);*/
+        /*        bounceVector = new Vector3(bounceDirection.x * bounceSpeed, bounceDirection.y * bounceSpeed, bounceDirection.z * bounceSpeed);
+                Debug.Log("Bounce Vector: " + bounceVector);*/
 
         marble.GetComponent<Rigidbody>().AddForce(bounceDirection, ForceMode.Impulse);
+
+        //animation
+        if(!GetComponent<Animator>().GetBool("Bounce Bool"))
+        {
+            GetComponent<Animator>().SetBool("Bounce Bool", true);
+            StartCoroutine("BouncerCountdown");
+        }       
+        
+    }
+
+    
+    IEnumerator BouncerCountdown()
+    {
+        yield return new WaitForSeconds(0.15f);
+        GetComponent<Animator>().SetBool("Bounce Bool", false);
     }
 }
