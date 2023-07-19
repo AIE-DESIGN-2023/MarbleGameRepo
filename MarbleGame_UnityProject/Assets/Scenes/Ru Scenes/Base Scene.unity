@@ -2086,7 +2086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449056885721051210, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 5.67125
+      value: 4.61375
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907382007096, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: field of view
@@ -2134,7 +2134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907446951244, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.47375
+      value: 2.12125
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907446951244, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
@@ -2218,7 +2218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7040891718654497131, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.835625
+      value: 2.306875
       objectReference: {fileID: 0}
     - target: {fileID: 8571193264045414452, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_Follow

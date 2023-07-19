@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<PlayerController>();
+        
         DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -31,9 +31,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!playerController)
+        {
+            playerController = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<PlayerController>();
+        }
+
+
         if (reachedBeatenLevelHitbox)
         {
-            
+            reachedBeatenLevelHitbox = false;
             StartCoroutine("LevelTransition");
         }
     }
