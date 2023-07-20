@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -19,11 +20,19 @@ public class GameController : MonoBehaviour
     [SerializeField] public bool reachedBeatenLevelHitbox;
     [SerializeField] public int sceneIndex;
 
+    [Space]
+    [Header("Cameras")]
+    [Space]
+    [SerializeField] public GameObject[] cameras;
+
+    [Space]
+    [Header("UI")]
+    [Space]
+    [SerializeField] float UISpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -46,30 +55,14 @@ public class GameController : MonoBehaviour
 
     public IEnumerator LevelTransition()
     {
+        Debug.Log("Coroutine 'Level transition' start");
+
         //remove player control
         playerController.playerActive = false;
 
-        //reset hole cams
-        foreach (GameObject holeCam in playerController.holeCams)
-        {
-            holeCam.GetComponent<CinemachineVirtualCamera>().Priority = 0;
-        }
+        yield return new WaitForSeconds(2f);
 
-        //freeze marble position
-        playerController.marble.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-
-        //load new level
-        SceneManager.LoadScene(sceneIndex++);
-
-        //move marble to new prespawn location
-
-
-        //reset marble spin and rotation
-
-
-        //unfreeze marble
-
-
-        yield return new WaitForSeconds(1f);
+        playerController.blackCircle.GetComponent<RectTransform>().position = playerController.blackCircle.GetComponent<RectTransform>().position + new Vector3(Time.deltaTime * UISpeed, 0, 0);
+           
     }
 }
