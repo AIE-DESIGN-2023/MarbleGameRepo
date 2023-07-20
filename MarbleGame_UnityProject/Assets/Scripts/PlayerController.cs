@@ -7,13 +7,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("ASSIGN THESE VARAIBLES IN EDITOR")]
-    [SerializeField] public GameObject[] cameras;
+    
     [SerializeField] public GameObject[] holeCams;
     [SerializeField] public GameObject board;
     [SerializeField] public GameObject spawnPos;
     [Space]
     [SerializeField] GameObject gameControllerPrefab;
     [SerializeField] GameObject marblePrefab;
+    [Space]
+    [SerializeField] public int sceneIndex;
+    [Space]
+    [SerializeField] public GameObject blackCircle;
+    [SerializeField] public GameObject blackRectangle;
 
     [Space]
     [Space]
@@ -21,14 +26,14 @@ public class PlayerController : MonoBehaviour
     [Header("VARIABLES THAT ARE FOUND OR INSTANTIATED")]
     [SerializeField] public GameObject marble;
     [SerializeField] public GameObject gameController;
+    [SerializeField] public GameObject[] cameras;
 
     [Space]
     [Space]
     [Header("Other Variables")]
     [Space]
     [Header("Camera")]
-    [SerializeField] public GameObject activeCam;
-    [SerializeField] int activeCamIndex;
+    [SerializeField] public int activeCamIndex;
     [Space]
     [Header("Camera ~ Lock")]
     [SerializeField] bool cameraLock;
@@ -43,7 +48,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int cameraPriority0 = 0;
     [Space]
     [Header("Camera XValue")]
-    [SerializeField] float activeCamValue;
+    [SerializeField] public float activeCamValue;
     [Space]
     [Header("Camera YValue")]
     [Range(-1, 1)]
@@ -67,10 +72,13 @@ public class PlayerController : MonoBehaviour
     [Space]
     [SerializeField] float TILTSPEED;
     [Space]
-    [SerializeField] Vector3 currentRot;
-    [SerializeField] Vector3 targetRot;
+    [SerializeField] public Vector3 currentRot;
+    [SerializeField] public Vector3 targetRot;
     [SerializeField] float moveTimer;
     [SerializeField] float MOVETIMEAMOUNT;
+
+
+    
 
 
 
@@ -81,19 +89,26 @@ public class PlayerController : MonoBehaviour
         //FIND MARBLE AND GAME CONTROLLER IF ALREADY IN LEVEL
         gameController = GameObject.FindGameObjectWithTag("GameController");
         marble = GameObject.FindGameObjectWithTag("Marble");
+        Debug.Log(marble);
 
         //INSTANTIATE IF NOT FOUND
         if(gameController == null)
         {
             gameController = Instantiate(gameControllerPrefab);
-
+            cameras[0] = gameController.GetComponent<GameController>().cameras[0];
+            cameras[1] = gameController.GetComponent<GameController>().cameras[1];
+            cameras[2] = gameController.GetComponent<GameController>().cameras[2];
         }
 
         //
         if(marble == null)
         {
-            marble = Instantiate(marblePrefab, spawnPos.transform.position, Quaternion.identity, gameObject.transform);
+            Debug.Log("Spawn Ball");
+            marble = Instantiate(marblePrefab, spawnPos.transform.position, Quaternion.identity);
         }
+
+
+            
 
 
         //Camera setup
@@ -109,7 +124,6 @@ public class PlayerController : MonoBehaviour
         }
 
         cameras[activeCamIndex].GetComponent<CinemachineVirtualCamera>().Priority = 1;
-        activeCam = cameras[activeCamIndex];
 
         //boardSetup
         currentRot = board.transform.rotation.eulerAngles;
@@ -121,11 +135,10 @@ public class PlayerController : MonoBehaviour
         if (playerActive)
         {
             TiltBoard();
-            CameraControl();
             InputManager();
         }
 
-        
+        CameraControl();
     }
 
     private void InputManager()
@@ -265,8 +278,8 @@ public class PlayerController : MonoBehaviour
 
     private void TiltBoard()
     {
-        float cameraX = activeCam.transform.position.x;
-        float cameraZ = activeCam.transform.position.z;
+        float cameraX = cameras[activeCamIndex].transform.position.x;
+        float cameraZ = cameras[activeCamIndex].transform.position.z;
 
         float marbleX = marble.transform.position.x;
         float marbleZ = marble.transform.position.z;
@@ -274,8 +287,8 @@ public class PlayerController : MonoBehaviour
         float diffX = cameraX - marbleX;
         float diffZ = cameraZ - marbleZ;
 
-        float diffXAbs = Mathf.Abs(Mathf.Abs(activeCam.transform.position.x) - Mathf.Abs(marble.transform.position.x));
-        float diffZAbs = Mathf.Abs(Mathf.Abs(activeCam.transform.position.z) - Mathf.Abs(marble.transform.position.z));
+        float diffXAbs = Mathf.Abs(Mathf.Abs(cameras[activeCamIndex].transform.position.x) - Mathf.Abs(marble.transform.position.x));
+        float diffZAbs = Mathf.Abs(Mathf.Abs(cameras[activeCamIndex].transform.position.z) - Mathf.Abs(marble.transform.position.z));
 
         if (currentRot != targetRot)
         {
@@ -361,6 +374,7 @@ public class PlayerController : MonoBehaviour
             board.transform.Rotate(WS * TILTSPEED * Time.deltaTime, 0, 0);
             board.transform.Rotate(0, 0, AD * TILTSPEED * Time.deltaTime);
         }
+
 
         //side 2
         if (diffZAbs <= diffXAbs && diffX < 0)
