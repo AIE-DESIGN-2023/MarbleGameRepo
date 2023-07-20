@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
         //Camera setup
         foreach (GameObject holeCam in holeCams)
         {
-            holeCam.GetComponent<CinemachineVirtualCamera>().LookAt = marble.transform;
+            if(holeCam != null)
+                holeCam.GetComponent<CinemachineVirtualCamera>().LookAt = marble.transform;
         }
         foreach (GameObject camera in cameras)
         {
@@ -140,6 +141,7 @@ public class PlayerController : MonoBehaviour
         CameraLock();
         foreach(GameObject holeCam in holeCams)
         {
+            if(holeCam != null)
             holeCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
         }
         
