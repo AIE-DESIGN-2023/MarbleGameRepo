@@ -435,7 +435,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32980
+  m_Name: pb_Mesh33594
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -599,7 +599,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-20416
+  m_Name: pb_Mesh-52904
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -768,7 +768,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh32966
+  m_Name: pb_Mesh33580
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -932,7 +932,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-20346
+  m_Name: pb_Mesh-52834
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17920,14 +17920,18 @@ PrefabInstance:
       objectReference: {fileID: 4745578789315289644}
     - target: {fileID: 2065698423524173997, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
       propertyPath: transitionX_Exit
-      value: 2190
+      value: 2460
       objectReference: {fileID: 0}
     - target: {fileID: 2065698423524173997, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
       propertyPath: transitionX_Enter
-      value: -2735
+      value: -2460
       objectReference: {fileID: 0}
     - target: {fileID: 2065698423524173997, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
       propertyPath: transitionX_Middle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731069519783744, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: -270
       objectReference: {fileID: 0}
     - target: {fileID: 2959763819218082099, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
@@ -17975,12 +17979,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4088933389137464948, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088933389137464948, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2735
+      value: 2460
       objectReference: {fileID: 0}
     - target: {fileID: 4133107978357454784, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
       propertyPath: m_Name
       value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511850271079749402, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
@@ -18012,9 +18024,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5449056885721051210, guid: d8e139477612fe1458e934e211050089, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 5.3675
+      objectReference: {fileID: 0}
     - target: {fileID: 5513975907382007103, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalPosition.y
       value: -16.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513975907446951244, guid: d8e139477612fe1458e934e211050089, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 2.3725
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907462092712, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_Name
@@ -18063,6 +18083,10 @@ PrefabInstance:
     - target: {fileID: 5513975907462092719, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040891718654497131, guid: d8e139477612fe1458e934e211050089, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 2.68375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8e139477612fe1458e934e211050089, type: 3}
