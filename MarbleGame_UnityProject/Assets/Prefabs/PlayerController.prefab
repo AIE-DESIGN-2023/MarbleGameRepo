@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3332107979862494311}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -77,10 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3aa3347bcf53df4aa3d9666be193678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   holeCams:
   - {fileID: 0}
   - {fileID: 0}
@@ -89,9 +85,13 @@ MonoBehaviour:
   spawnPos: {fileID: 0}
   gameControllerPrefab: {fileID: 4133107978357454784, guid: cc95c4a08b17b594287e3117eb754947, type: 3}
   marblePrefab: {fileID: 4336677688136593896, guid: a90001ce597030541a28ce2c0af9d73f, type: 3}
+  sceneIndex: 0
   marble: {fileID: 0}
   gameController: {fileID: 0}
-  activeCam: {fileID: 0}
+  cameras:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   activeCamIndex: 0
   cameraLock: 0
   cameraSpeedMax: 300
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6063924081362476485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -36.1, z: 0}
+  m_LocalPosition: {x: 0, y: -15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
