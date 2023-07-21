@@ -15,6 +15,7 @@ TagManager:
   - Floor Wood
   - Floor Glass
   - PlayerController
+  - TransitionUI
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
-using System;
 
 public class GameController : MonoBehaviour
 {
@@ -19,16 +18,14 @@ public class GameController : MonoBehaviour
     [SerializeField] public bool hasBeatenLevel;
     [SerializeField] public bool reachedBeatenLevelHitbox;
     [SerializeField] public int sceneIndex;
+    [Space]
+    [SerializeField] public GameObject transistionUI;
+    [SerializeField] public float transitionX_Current;
+    [SerializeField] public float transitionX_Enter;
+    [SerializeField] public float transitionX_Middle;
+    [SerializeField] public float transitionX_Exit;
 
-    [Space]
-    [Header("Cameras")]
-    [Space]
-    [SerializeField] public GameObject[] cameras;
 
-    [Space]
-    [Header("UI")]
-    [Space]
-    [SerializeField] float UISpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -55,14 +52,24 @@ public class GameController : MonoBehaviour
 
     public IEnumerator LevelTransition()
     {
-        Debug.Log("Coroutine 'Level transition' start");
-
         //remove player control
         playerController.playerActive = false;
 
-        yield return new WaitForSeconds(2f);
 
-        playerController.blackCircle.GetComponent<RectTransform>().position = playerController.blackCircle.GetComponent<RectTransform>().position + new Vector3(Time.deltaTime * UISpeed, 0, 0);
-           
+
+
+        //load new level
+        SceneManager.LoadScene(sceneIndex++);
+
+        //move marble to new prespawn location
+
+
+        //reset marble spin and rotation
+
+
+        //unfreeze marble
+
+
+        yield return new WaitForSeconds(1f);
     }
 }
