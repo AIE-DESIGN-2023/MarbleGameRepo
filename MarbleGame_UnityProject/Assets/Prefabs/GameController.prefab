@@ -46,14 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  UIAnimator: {fileID: 1760735304015323012}
   hasBeatenLevel: 0
   reachedBeatenLevelHitbox: 0
-  sceneIndex: 0
-  transistionUI: {fileID: 7263616662632650240}
-  transitionX_Current: 0
-  transitionX_Enter: -2460
-  transitionX_Middle: 0
-  transitionX_Exit: 2460
 --- !u!1001 &749154261144644652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,13 +100,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2306025058611080917, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fff98e39b59902d42adb3869ebec5016, type: 3}
+    - target: {fileID: 2306025058611080917, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306025058611080917, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306025058611080917, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2884788758584970092, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -270
       objectReference: {fileID: 0}
     - target: {fileID: 3664602522434855512, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3000
+      value: 4043.37
       objectReference: {fileID: 0}
     - target: {fileID: 3664602522434855512, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -137,3 +148,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7973635277865155116, guid: d45397e7af388fc45a1fb3bc0d22e233, type: 3}
   m_PrefabInstance: {fileID: 749154261144644652}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1760735304015323012
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7263616662632650240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e6b75afc5c30e849980528bcf427425, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
