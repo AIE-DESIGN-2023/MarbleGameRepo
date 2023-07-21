@@ -18,12 +18,18 @@ public class GameController : MonoBehaviour
     [SerializeField] public bool hasBeatenLevel;
     [SerializeField] public bool reachedBeatenLevelHitbox;
     [SerializeField] public int sceneIndex;
+    [Space]
+    [SerializeField] public GameObject transistionUI;
+    [SerializeField] public float transitionX_Current;
+    [SerializeField] public float transitionX_Enter;
+    [SerializeField] public float transitionX_Middle;
+    [SerializeField] public float transitionX_Exit;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
         DontDestroyOnLoad(gameObject);
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -49,14 +55,8 @@ public class GameController : MonoBehaviour
         //remove player control
         playerController.playerActive = false;
 
-        //reset hole cams
-        foreach (GameObject holeCam in playerController.holeCams)
-        {
-            holeCam.GetComponent<CinemachineVirtualCamera>().Priority = 0;
-        }
 
-        //freeze marble position
-        playerController.marble.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+
 
         //load new level
         SceneManager.LoadScene(sceneIndex++);
