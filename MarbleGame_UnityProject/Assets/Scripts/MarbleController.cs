@@ -139,7 +139,8 @@ public class MarbleController : MonoBehaviour
         //glass wall
         if (collision.gameObject.tag == WALLGLASSTAG)
         {
-
+            GetGlassImpactClip();
+            PlayImpact();
         }
 
         //floor wood
@@ -148,6 +149,20 @@ public class MarbleController : MonoBehaviour
             Debug.Log("FLOOR WOOD TAG ENTER");
             isGrounded = true;
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == FLOORWOODTAG)
+        {
+            Debug.Log("FLOOR WOOD TAG Stay");
+            isGrounded = true;
+        }
+    }
+
+    private void GetGlassImpactClip()
+    {
+        impactSource.clip = wallGlassImpactsHard[Random.Range(0, wallGlassImpactsHard.Count)];
     }
 
     private void PlayImpact()

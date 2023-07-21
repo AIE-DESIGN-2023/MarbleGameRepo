@@ -9,7 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Ru Scenes/Ru Level 1.unity
     guid: e34c01cc349c952469ccdce9c7c2db2e
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Final Levels/Ru Level 2.unity
+=======
+    path: Assets/Scenes/Final Scenes/0.unity
+>>>>>>> origin/Ru2
     guid: c029c897c4056494f8f3f294c5624cd5
   - enabled: 1
     path: Assets/Scenes/Ru Scenes/Ru Level 3.unity

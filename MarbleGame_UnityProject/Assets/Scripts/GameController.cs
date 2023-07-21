@@ -11,12 +11,14 @@ public class GameController : MonoBehaviour
     [Header("Gameobjects")]
     [Space]
     [SerializeField] PlayerController playerController;
+    [SerializeField] public Animator UIAnimator;
 
     [Space]
     [Header("Level Variables")]
     [Space]
     [SerializeField] public bool hasBeatenLevel;
     [SerializeField] public bool reachedBeatenLevelHitbox;
+<<<<<<< HEAD
     [SerializeField] public int sceneIndex;
     [Space]
     [SerializeField] public GameObject transistionUI;
@@ -26,6 +28,8 @@ public class GameController : MonoBehaviour
     [SerializeField] public float transitionX_Exit;
 
 
+=======
+>>>>>>> origin/Ru2
 
     // Start is called before the first frame update
     void Start()
@@ -44,32 +48,36 @@ public class GameController : MonoBehaviour
 
         if (reachedBeatenLevelHitbox)
         {
-            //transistionUI.GetComponent<RectTransform>().position.x = transitionX_Enter;
             reachedBeatenLevelHitbox = false;
+            playerController.playerActive = false;
             StartCoroutine("LevelTransition");
         }
     }
 
     public IEnumerator LevelTransition()
     {
+<<<<<<< HEAD
         //remove player control
         playerController.playerActive = false;
 
 
+=======
+        UIAnimator.SetTrigger("Transition Exit");
+>>>>>>> origin/Ru2
 
+        yield return new WaitForSeconds(3f);
 
         //load new level
-        SceneManager.LoadScene(sceneIndex++);
+        SceneManager.LoadScene(playerController.sceneIndex++);
 
         //move marble to new prespawn location
-
-
-        //reset marble spin and rotation
-
-
-        //unfreeze marble
-
+        UIAnimator.SetTrigger("Transition Enter");
 
         yield return new WaitForSeconds(1f);
+<<<<<<< HEAD
+=======
+
+        playerController.playerActive = true;
+>>>>>>> origin/Ru2
     }
 }

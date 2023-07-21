@@ -407,7 +407,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 084f4de74f6a0344586495475063cf28, type: 3}
   wallGlassImpactsSoft: []
   wallGlassImpactsMedium: []
-  wallGlassImpactsHard: []
+  wallGlassImpactsHard:
+  - {fileID: 8300000, guid: ef9d83e48810df2418281d54277a27e8, type: 3}
+  - {fileID: 8300000, guid: ac59e6711e9a54f469b5634558b7f099, type: 3}
+  - {fileID: 8300000, guid: 41c961c66e758a343b5b5ed4aa925f3e, type: 3}
   WALLWOODTAG: Wall Wood
   WALLGLASSTAG: Wall Glass
   FLOORWOODTAG: Floor Wood

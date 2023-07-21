@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7304993437132826865
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  shutterAngle:
+    overrideState: 1
+    value: 293
+  sampleCount:
+    overrideState: 1
+    value: 10
 --- !u!114 &-6055379324302852064
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -18,13 +40,13 @@ MonoBehaviour:
     value: 1
   thickness:
     overrideState: 1
-    value: 5
+    value: 1.36
   depthMultiplier:
     overrideState: 1
-    value: 1
+    value: 1.21
   depthBias:
     overrideState: 1
-    value: 0.46
+    value: 1.1
   normalMultiplier:
     overrideState: 1
     value: 0
@@ -34,6 +56,34 @@ MonoBehaviour:
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &-5990400561846497869
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
+  m_Name: Grain
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  colored:
+    overrideState: 0
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 0.11
+  size:
+    overrideState: 1
+    value: 0.7
+  lumContrib:
+    overrideState: 1
+    value: 0.8
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,3 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -6055379324302852064}
+  - {fileID: -5990400561846497869}
+  - {fileID: -7304993437132826865}

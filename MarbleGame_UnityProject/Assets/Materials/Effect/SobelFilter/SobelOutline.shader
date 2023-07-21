@@ -2,7 +2,7 @@ Shader "VertexFragment/SobelOutlineCg"
 {
     SubShader
     {
-        Cull Off ZWrite Off ZTest Always
+        Cull Off ZWrite On ZTest Always
 
         Pass
         {

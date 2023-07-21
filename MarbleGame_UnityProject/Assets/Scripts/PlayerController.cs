@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
     [Space]
     [SerializeField] GameObject gameControllerPrefab;
     [SerializeField] GameObject marblePrefab;
+<<<<<<< HEAD
+=======
+    [Space]
+    [SerializeField] public int sceneIndex;
+>>>>>>> origin/Ru2
 
     [Space]
     [Space]
