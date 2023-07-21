@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 20a938fa974664249a40da622be5fcab, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.31962374, g: 0.1828262, b: 0.29170334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20216,6 +20216,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1877485447}
     - target: {fileID: 3858834028190729731, guid: 8c8cca262d7d9764f9f18ed113cdf2f9, type: 3}
+      propertyPath: sceneIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858834028190729731, guid: 8c8cca262d7d9764f9f18ed113cdf2f9, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1412611121}
@@ -20342,7 +20346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5449056885721051210, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 4.61375
+      value: 5.47625
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907382007096, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: field of view
@@ -20390,7 +20394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907446951244, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.12125
+      value: 2.40875
       objectReference: {fileID: 0}
     - target: {fileID: 5513975907446951244, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
@@ -20474,7 +20478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7040891718654497131, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.306875
+      value: 2.738125
       objectReference: {fileID: 0}
     - target: {fileID: 8571193264045414452, guid: d8e139477612fe1458e934e211050089, type: 3}
       propertyPath: m_Follow
