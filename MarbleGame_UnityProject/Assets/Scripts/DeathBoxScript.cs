@@ -21,6 +21,8 @@ public class DeathBoxScript : MonoBehaviour
 
                 //reset board rotation
                 playerController.board.transform.rotation = Quaternion.identity;
+                playerController.currentRot = Vector3.zero;
+                playerController.targetRot = Vector3.zero;
 
             }
         }
