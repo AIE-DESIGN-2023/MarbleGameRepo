@@ -42,9 +42,11 @@ public class GameController : MonoBehaviour
             playerController = GameObject.FindGameObjectWithTag("PlayerController").GetComponent<PlayerController>();
         }
 
+        Debug.Log(transistionUI.GetComponent<RectTransform>().position.x);
 
         if (reachedBeatenLevelHitbox)
         {
+             
             reachedBeatenLevelHitbox = false;
             StartCoroutine("LevelTransition");
         }

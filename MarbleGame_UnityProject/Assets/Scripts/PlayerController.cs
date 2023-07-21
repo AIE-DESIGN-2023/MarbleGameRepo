@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //Camera setup
+        //Camera setup 
         foreach (GameObject holeCam in holeCams)
         {
             if(holeCam != null)
