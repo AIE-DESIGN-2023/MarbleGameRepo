@@ -14,8 +14,15 @@ public class DeathBoxScript : MonoBehaviour
         {
             if (other.tag == marbleTag)
             {
-                Debug.Log("Respawn ball");
-                Respawn();
+                //reset marble position
+                playerController.marble.transform.position = playerController.spawnPos.transform.position;
+                playerController.marble.GetComponent<Rigidbody>().Sleep();
+                playerController.marble.GetComponent<Rigidbody>().WakeUp();
+
+                //reset board rotation
+                playerController.board.transform.rotation = Quaternion.identity;
+                playerController.currentRot = Vector3.zero;
+                playerController.targetRot = Vector3.zero;
 
             }
         }
@@ -23,18 +30,5 @@ public class DeathBoxScript : MonoBehaviour
         {
             playerController.gameController.GetComponent<GameController>().reachedBeatenLevelHitbox = true;
         }
-    }
-
-    private void Respawn()
-    {
-        //reset marble position
-        playerController.marble.transform.position = playerController.spawnPos.transform.position;
-        playerController.marble.GetComponent<Rigidbody>().Sleep();
-        playerController.marble.GetComponent<Rigidbody>().WakeUp();
-
-        //reset board rotation
-        playerController.board.transform.rotation = Quaternion.identity;
-        playerController.currentRot = new Vector3(0f, 0f, 0f);
-        playerController.targetRot = new Vector3(0f, 0f, 0f);
     }
 }

@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour
     [Space]
     [SerializeField] float TILTSPEED;
     [Space]
-    [SerializeField] Vector3 currentRot;
-    [SerializeField] Vector3 targetRot;
+    [SerializeField] public Vector3 currentRot;
+    [SerializeField] public Vector3 targetRot;
     [SerializeField] float moveTimer;
     [SerializeField] float MOVETIMEAMOUNT;
 
