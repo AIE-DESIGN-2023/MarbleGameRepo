@@ -27,6 +27,7 @@ public class DeathBoxScript : MonoBehaviour
     IEnumerator RestartLevel()
     {
         playerController.gameController.GetComponent<GameController>().UIAnimator.SetTrigger("Death Exit");
+        playerController.playerActive = false;
 
         yield return new WaitForSeconds(0.55f);
         //reset marble position
@@ -43,5 +44,9 @@ public class DeathBoxScript : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         playerController.gameController.GetComponent<GameController>().UIAnimator.SetTrigger("Death Enter");
+
+        yield return new WaitForSeconds(0.1f);
+
+        playerController.playerActive = true;
     }
 }
