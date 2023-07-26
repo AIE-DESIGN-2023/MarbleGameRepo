@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: 5.645, z: -13.5}
+  m_FollowOffset: {x: 0, y: 3.665, z: -13.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.09803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -812,12 +812,12 @@ MonoBehaviour:
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 0
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0.5
+  m_CameraRadius: 1.66
+  m_Strategy: 1
+  m_MaximumEffort: 2
+  m_SmoothingTime: 0.25
+  m_Damping: 1
+  m_DampingWhenOccluded: 1
   m_OptimalTargetDistance: 0
 --- !u!1 &5513975907382007098
 GameObject:
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: 2.465, z: -3.75}
+  m_FollowOffset: {x: 0, y: 1.805, z: -3.75}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1273,12 +1273,12 @@ MonoBehaviour:
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 0
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0.5
+  m_CameraRadius: 1.66
+  m_Strategy: 1
+  m_MaximumEffort: 2
+  m_SmoothingTime: 0.25
+  m_Damping: 1
+  m_DampingWhenOccluded: 1
   m_OptimalTargetDistance: 0
 --- !u!1 &6894234037075053859
 GameObject:
@@ -1375,12 +1375,12 @@ MonoBehaviour:
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 0
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0.5
+  m_CameraRadius: 1.66
+  m_Strategy: 1
+  m_MaximumEffort: 2
+  m_SmoothingTime: 0.25
+  m_Damping: 1
+  m_DampingWhenOccluded: 1
   m_OptimalTargetDistance: 0
 --- !u!1 &7952699037246467202
 GameObject:
@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: 2.8225, z: -7}
+  m_FollowOffset: {x: 0, y: 1.8325, z: -7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
