@@ -40,13 +40,13 @@ MonoBehaviour:
     value: 1
   thickness:
     overrideState: 1
-    value: 1.36
+    value: 1
   depthMultiplier:
     overrideState: 1
-    value: 1.21
+    value: 1
   depthBias:
     overrideState: 1
-    value: 1.1
+    value: 1
   normalMultiplier:
     overrideState: 1
     value: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
+    value: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &-5990400561846497869
 MonoBehaviour:
   m_ObjectHideFlags: 3
