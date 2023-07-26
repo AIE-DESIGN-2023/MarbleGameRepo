@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
 {
     [Header("ASSIGN THESE VARAIBLES IN EDITOR")]
     [SerializeField] public GameObject[] cameras;
+    [SerializeField] public CinemachineVirtualCamera miniMapVC;
     [SerializeField] public GameObject[] holeCams;
     [SerializeField] public GameObject board;
     [SerializeField] public GameObject spawnPos;
+    
     [Space]
     [SerializeField] GameObject gameControllerPrefab;
     [SerializeField] GameObject marblePrefab;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [Header("VARIABLES THAT ARE FOUND OR INSTANTIATED")]
     [SerializeField] public GameObject marble;
     [SerializeField] public GameObject gameController;
+    [SerializeField] public GameObject deathBox;
 
     [Space]
     [Space]
@@ -73,6 +76,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Vector3 targetRot;
     [SerializeField] float moveTimer;
     [SerializeField] float MOVETIMEAMOUNT;
+    [Space]
+    [SerializeField] float resetLevelTimeMax;
+    [SerializeField] float resetLevelTimer;
+    [Space]
+    [SerializeField] float resetBoardCountdownMax;
+    [SerializeField] float resetBoardCountdown;
+    [SerializeField] float resetBoardMoveTime;
+    [SerializeField] float resetBoardTimer;
+
 
 
 
@@ -88,7 +100,6 @@ public class PlayerController : MonoBehaviour
         if(gameController == null)
         {
             gameController = Instantiate(gameControllerPrefab);
-
         }
 
         //
@@ -115,6 +126,13 @@ public class PlayerController : MonoBehaviour
 
         //boardSetup
         currentRot = board.transform.rotation.eulerAngles;
+
+        //get deathbox
+        deathBox = GetComponentInChildren<DeathBoxScript>().gameObject;
+        resetLevelTimer = resetLevelTimeMax;
+
+        //set resetboard variable
+        resetBoardCountdown = resetBoardCountdownMax; 
     }
 
     // Update is called once per frame
@@ -125,9 +143,37 @@ public class PlayerController : MonoBehaviour
             TiltBoard();
             CameraControl();
             InputManager();
+            RestartLevelController();
+            ResetBoardController();
+        }
+    }
+
+    private void ResetBoardController()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            resetBoardTimer = 0;
         }
 
-        
+
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            resetBoardCountdown -= Time.deltaTime;
+        }
+
+        if(Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            resetBoardCountdown = resetBoardCountdownMax;
+            resetBoardTimer = 0;
+        }
+
+        if(resetBoardCountdown < 0)
+        {
+            resetBoardTimer += Time.deltaTime;
+            targetRot = Vector3.zero;
+            currentRot = Vector3.Slerp(currentRot, targetRot, resetBoardTimer / resetBoardMoveTime);
+            board.transform.rotation = Quaternion.Euler(currentRot.x, currentRot.y, currentRot.z);
+        }
     }
 
     private void InputManager()
@@ -136,7 +182,25 @@ public class PlayerController : MonoBehaviour
         AD = Input.GetAxis("AD");
     }
 
-    
+    private void RestartLevelController()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            resetLevelTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            resetLevelTimer = resetLevelTimeMax;
+        }
+
+        if (resetLevelTimer < 0)
+        {
+            resetLevelTimer = resetLevelTimeMax;
+            deathBox.GetComponent<DeathBoxScript>().StartCoroutine("RestartLevel");
+        }
+    }
+
 
     private void CameraControl()
     {
@@ -168,6 +232,7 @@ public class PlayerController : MonoBehaviour
                     cameras[i].GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
                 }
             }
+            miniMapVC.GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
 
             //set y values
             //vc1
@@ -267,17 +332,6 @@ public class PlayerController : MonoBehaviour
 
     private void TiltBoard()
     {
-        float cameraX = activeCam.transform.position.x;
-        float cameraZ = activeCam.transform.position.z;
-
-        float marbleX = marble.transform.position.x;
-        float marbleZ = marble.transform.position.z;
-
-        float diffX = cameraX - marbleX;
-        float diffZ = cameraZ - marbleZ;
-
-        float diffXAbs = Mathf.Abs(Mathf.Abs(activeCam.transform.position.x) - Mathf.Abs(marble.transform.position.x));
-        float diffZAbs = Mathf.Abs(Mathf.Abs(activeCam.transform.position.z) - Mathf.Abs(marble.transform.position.z));
 
         if (currentRot != targetRot)
         {
@@ -354,37 +408,3 @@ public class PlayerController : MonoBehaviour
         board.transform.rotation = Quaternion.Euler(currentRot.x, currentRot.y, currentRot.z); 
     }
 }
-
-
-/*//side 1
-        if (diffZAbs >= diffXAbs && diffZ > 0)
-        {
-            //Debug.Log("Side 1");
-            board.transform.Rotate(WS * TILTSPEED * Time.deltaTime, 0, 0);
-            board.transform.Rotate(0, 0, AD * TILTSPEED * Time.deltaTime);
-        }
-
-        //side 2
-        if (diffZAbs <= diffXAbs && diffX < 0)
-        {
-            //Debug.Log("Side 2");
-            board.transform.Rotate(0, 0, WS * TILTSPEED * Time.deltaTime);
-            board.transform.Rotate(-AD * TILTSPEED * Time.deltaTime, 0, 0);            
-        }
-
-
-        //side 3
-        if (diffZAbs >= diffXAbs && diffZ < 0)
-        {
-            //Debug.Log("Side 3");
-            board.transform.Rotate(-WS * TILTSPEED * Time.deltaTime, 0, 0);
-            board.transform.Rotate(0, 0, -AD * TILTSPEED * Time.deltaTime);
-        }
-
-        //side 4
-        if (diffZAbs <= diffXAbs && diffX > 0)
-        {
-            //Debug.Log("Side 4");
-            board.transform.Rotate(0, 0, -WS * TILTSPEED * Time.deltaTime);
-            board.transform.Rotate(AD * TILTSPEED * Time.deltaTime, 0, 0);
-        }*/

@@ -55,23 +55,37 @@ public class MarbleController : MonoBehaviour
     [SerializeField] float pitchVariation;
     [SerializeField] float pitchMaxVariation;
 
+    [Space]
+    [Header("Colour Change stuff")]
+    [SerializeField] Material mat;
+    [SerializeField] Color targetColour;
+    
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-
         rollingSource.clip = rollingWood;
-
-        
     }
 
     //update
     private void Update()
     {
         VolumneCalculator();
+        GroundedController();
+        MaterialController();
+    }
 
+    private void MaterialController()
+    {
+        //targetColour = GetComponent<MeshRenderer>().material.color;
+        GetComponent<MeshRenderer>().material.SetColor("Colour", targetColour);
+    }
+
+    private void GroundedController()
+    {
         if (isGrounded)
         {
-            if(!rollingSource.isPlaying)
+            if (!rollingSource.isPlaying)
             {
                 rollingSource.Play();
             }
@@ -81,7 +95,7 @@ public class MarbleController : MonoBehaviour
             //rollingSource.pitch = pitchVariation+pitchOffset;
 
             //floor impact
-            if(!hasGroundImpactPlayed)
+            if (!hasGroundImpactPlayed)
             {
                 hasGroundImpactPlayed = true;
 
@@ -99,7 +113,7 @@ public class MarbleController : MonoBehaviour
             groundImpactTimer -= Time.deltaTime;
         }
 
-        if(groundImpactTimer < 0 && !isGrounded)
+        if (groundImpactTimer < 0 && !isGrounded)
         {
             hasGroundImpactPlayed = false;
         }
