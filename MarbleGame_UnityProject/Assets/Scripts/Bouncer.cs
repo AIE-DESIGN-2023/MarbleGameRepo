@@ -23,9 +23,9 @@ public class Bouncer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision BOuncer / Marble");
+        //Debug.Log("Collision BOuncer / Marble");
 
-        Debug.Log("Bounce Direction: " + bounceDirection);
+        //Debug.Log("Bounce Direction: " + bounceDirection);
 
         /*        bounceVector = new Vector3(bounceDirection.x * bounceSpeed, bounceDirection.y * bounceSpeed, bounceDirection.z * bounceSpeed);
                 Debug.Log("Bounce Vector: " + bounceVector);*/
