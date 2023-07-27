@@ -17,6 +17,8 @@ public class MiniBoardCamScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CMVirtualCam.GetComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = Pcontroller.activeCamValue;
+        CinemachineOrbitalTransposer CMOrbitalTransposer = CMVirtualCam.GetComponent<CinemachineOrbitalTransposer>();
+        float activeCamValue = Pcontroller.activeCamValue;
+        CMOrbitalTransposer.m_XAxis.Value = activeCamValue;
     }
 }

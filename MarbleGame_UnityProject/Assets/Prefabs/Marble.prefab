@@ -390,7 +390,7 @@ MonoBehaviour:
   rollingSource: {fileID: 7745707704836873114}
   impactSource: {fileID: 6333102656344220134}
   rollingAudioDecreaseSpeed: 1
-  rollingWood: {fileID: 8300000, guid: 377b0626ef32668409bb803d1fe84e11, type: 3}
+  rollingWood: {fileID: 8300000, guid: 3123839991da6f4499763e77bc5eaa37, type: 3}
   isGrounded: 0
   softThreshold: 0.45
   hardThreshold: 0.65
@@ -398,25 +398,20 @@ MonoBehaviour:
   groundImpactTimer: 0
   groundImpactWaitTime: 0.1
   tempClip: {fileID: 0}
-  wallWoodImpactsSoft:
-  - {fileID: 8300000, guid: 4c952ccd19eb46b41a28a2b937087fba, type: 3}
-  wallWoodImpactsMedium:
-  - {fileID: 8300000, guid: e76065415e497e14a9bd8b70fc61f4e6, type: 3}
-  wallWoodImpactsHard:
-  - {fileID: 8300000, guid: d83975503a0880541be2b9c2b8aefece, type: 3}
-  - {fileID: 8300000, guid: 084f4de74f6a0344586495475063cf28, type: 3}
-  wallGlassImpactsSoft: []
-  wallGlassImpactsMedium: []
-  wallGlassImpactsHard:
-  - {fileID: 8300000, guid: ef9d83e48810df2418281d54277a27e8, type: 3}
-  - {fileID: 8300000, guid: ac59e6711e9a54f469b5634558b7f099, type: 3}
+  wallWoodImpacts:
+  - {fileID: 8300000, guid: 1b1fe655510e2674e9c0186d03a19a29, type: 3}
+  - {fileID: 8300000, guid: 8de4bde8959cec6458c2c8ebd9bbfe46, type: 3}
+  - {fileID: 8300000, guid: e016590706e656c46953b26a477ac80b, type: 3}
+  wallGlassImpacts:
   - {fileID: 8300000, guid: 41c961c66e758a343b5b5ed4aa925f3e, type: 3}
+  - {fileID: 8300000, guid: ac59e6711e9a54f469b5634558b7f099, type: 3}
+  - {fileID: 8300000, guid: ef9d83e48810df2418281d54277a27e8, type: 3}
   WALLWOODTAG: Wall Wood
   WALLGLASSTAG: Wall Glass
   FLOORWOODTAG: Floor Wood
-  FLOORGLASSTAG: Floor Glass
   marbleMagnitude: 0
-  maxMagnitude: 10
+  maxMagnitude: 15
+  offsetMagnitude: 0.05
   pitchOffset: 1
   pitchVariation: 0
   pitchMaxVariation: 0.3

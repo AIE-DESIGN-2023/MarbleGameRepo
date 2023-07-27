@@ -19,6 +19,9 @@ public class GameController : MonoBehaviour
     [SerializeField] public bool hasBeatenLevel;
     [SerializeField] public bool reachedBeatenLevelHitbox;
 
+    [Space]
+    [SerializeField] GameObject devToolCanvas;
+
     // Start is called before the first frame update
     void Start()
     {

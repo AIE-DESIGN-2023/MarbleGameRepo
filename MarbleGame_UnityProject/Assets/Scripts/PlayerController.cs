@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
                     cameras[i].GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
                 }
             }
-            
+            miniMapVC.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
 
             //set y values
             //vc1

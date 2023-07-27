@@ -32,12 +32,8 @@ public class MarbleController : MonoBehaviour
     [Space]
     [SerializeField] AudioClip tempClip;
     [Space]
-    [SerializeField] List<AudioClip> wallWoodImpactsSoft;
-    [SerializeField] List<AudioClip> wallWoodImpactsMedium;
-    [SerializeField] List<AudioClip> wallWoodImpactsHard;
-    [SerializeField] List<AudioClip> wallGlassImpactsSoft;
-    [SerializeField] List<AudioClip> wallGlassImpactsMedium;
-    [SerializeField] List<AudioClip> wallGlassImpactsHard;
+    [SerializeField] List<AudioClip> wallWoodImpacts;
+    [SerializeField] List<AudioClip> wallGlassImpacts;
 
 
     [Space]
@@ -45,28 +41,22 @@ public class MarbleController : MonoBehaviour
     [SerializeField] string WALLWOODTAG;
     [SerializeField] string WALLGLASSTAG;
     [SerializeField] string FLOORWOODTAG;
-    [SerializeField] string FLOORGLASSTAG;
 
     [Space]
     [Header("Marble Variables")]
     [SerializeField] float marbleMagnitude;
     [SerializeField] float maxMagnitude;
+    [SerializeField] float offsetMagnitude;
+    [Space]
     [SerializeField] float pitchOffset;
     [SerializeField] float pitchVariation;
     [SerializeField] float pitchMaxVariation;
-
-    [Space]
-    [Header("Colour Change stuff")]
-    [SerializeField] Material mat;
-    [SerializeField] Color targetColour;
     
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
         rollingSource.clip = rollingWood;
-
-
     }
 
     //update
@@ -74,14 +64,8 @@ public class MarbleController : MonoBehaviour
     {
         VolumneCalculator();
         GroundedController();
-        MaterialController();
     }
 
-    private void MaterialController()
-    {
-        //targetColour = GetComponent<MeshRenderer>().material.color;
-        GetComponent<MeshRenderer>().material.SetColor("Colour", targetColour);
-    }
 
     private void GroundedController()
     {
@@ -93,7 +77,7 @@ public class MarbleController : MonoBehaviour
             }
 
             //apply marble magnitude
-            rollingSource.volume = marbleMagnitude;
+            rollingSource.volume = marbleMagnitude - offsetMagnitude;
             //rollingSource.pitch = pitchVariation+pitchOffset;
 
             //floor impact
@@ -101,7 +85,7 @@ public class MarbleController : MonoBehaviour
             {
                 hasGroundImpactPlayed = true;
 
-                GetWoodImpactClip();
+                impactSource.clip = wallWoodImpacts[Random.Range(0, wallWoodImpacts.Count)];
 
                 //set volume
                 impactSource.volume = 1;
@@ -121,25 +105,6 @@ public class MarbleController : MonoBehaviour
         }
     }
 
-    private void GetWoodImpactClip()
-    {
-        if (marbleMagnitude > hardThreshold)
-        {
-            Debug.Log("PLAY HARD WOOD WALL SOUND");
-            impactSource.clip = wallWoodImpactsHard[Random.Range(0, wallWoodImpactsHard.Count)];
-        }
-        else if (marbleMagnitude > softThreshold && marbleMagnitude < hardThreshold)
-        {
-            Debug.Log("PLAY MEDIUM WOOD WALL SOUND");
-            impactSource.clip = wallWoodImpactsMedium[Random.Range(0, wallWoodImpactsMedium.Count)];
-        }
-        else if (marbleMagnitude < softThreshold)
-        {
-            Debug.Log("Play soft sound");
-            impactSource.clip = wallWoodImpactsSoft[Random.Range(0, wallWoodImpactsSoft.Count)];
-        }
-    }
-
     //on collision enter
     private void OnCollisionEnter(Collision collision)
     {
@@ -147,7 +112,7 @@ public class MarbleController : MonoBehaviour
         if(collision.gameObject.tag == WALLWOODTAG)
         {
             Debug.Log("WALL WOOD TAG COLLISION ENTER");
-            GetWoodImpactClip();
+            impactSource.clip = wallWoodImpacts[Random.Range(0, wallWoodImpacts.Count)];
             PlayImpact();
         }
 
@@ -155,7 +120,7 @@ public class MarbleController : MonoBehaviour
         //glass wall
         if (collision.gameObject.tag == WALLGLASSTAG)
         {
-            GetGlassImpactClip();
+            impactSource.clip = wallGlassImpacts[Random.Range(0, wallGlassImpacts.Count)];
             PlayImpact();
         }
 
@@ -174,11 +139,6 @@ public class MarbleController : MonoBehaviour
             Debug.Log("FLOOR WOOD TAG Stay");
             isGrounded = true;
         }
-    }
-
-    private void GetGlassImpactClip()
-    {
-        impactSource.clip = wallGlassImpactsHard[Random.Range(0, wallGlassImpactsHard.Count)];
     }
 
     private void PlayImpact()
