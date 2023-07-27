@@ -16,6 +16,7 @@ TagManager:
   - Floor Glass
   - PlayerController
   - TransitionUI
+  - Bouncers
   layers:
   - Default
   - TransparentFX

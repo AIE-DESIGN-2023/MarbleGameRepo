@@ -40,6 +40,11 @@ public class GameController : MonoBehaviour
             playerController.playerActive = false;
             StartCoroutine("LevelTransition");
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public IEnumerator LevelTransition()
