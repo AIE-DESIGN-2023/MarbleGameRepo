@@ -48,6 +48,30 @@ public class GameController : MonoBehaviour
         {
             Application.Quit();
         }
+
+        if(Input.GetKeyDown(KeyCode.BackQuote))
+        {
+            if(devToolCanvas.activeInHierarchy)
+            {
+                DevToolsOff();
+            }
+            else
+            {
+                DevToolsOn();
+            }
+        }
+    }
+
+    private void DevToolsOn()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        devToolCanvas.SetActive(true);
+    }
+
+    private void DevToolsOff()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        devToolCanvas.SetActive(false);
     }
 
     public IEnumerator LevelTransition()
@@ -57,7 +81,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         //load new level
-        SceneManager.LoadScene(playerController.sceneIndex++);
+        SceneManager.LoadScene(playerController.sceneIndex + 1);
 
         //move marble to new prespawn location
         UIAnimator.SetTrigger("Transition Enter");
@@ -65,5 +89,54 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         playerController.playerActive = true;
+    }
+
+    public void LoadNextScene()
+    {
+        //load new level
+        SceneManager.LoadScene(playerController.sceneIndex + 1);
+        DevToolsOff();
+    }
+
+    public void LoadScene0()
+    {
+        SceneManager.LoadScene(0);
+        DevToolsOff();
+    }
+
+    public void LoadScene1()
+    {
+        SceneManager.LoadScene(1);
+        DevToolsOff();
+    }
+
+    public void LoadScene2()
+    {
+        SceneManager.LoadScene(2);
+        DevToolsOff();
+    }
+
+    public void LoadScene3()
+    {
+        SceneManager.LoadScene(3);
+        DevToolsOff();
+    }
+
+    public void LoadScene4()
+    {
+        SceneManager.LoadScene(4);
+        DevToolsOff();
+    }
+
+    public void LoadScene5()
+    {
+        SceneManager.LoadScene(5);
+        DevToolsOff();
+    }
+
+    public void LoadScene6()
+    {
+        SceneManager.LoadScene(6);
+        DevToolsOff();
     }
 }
