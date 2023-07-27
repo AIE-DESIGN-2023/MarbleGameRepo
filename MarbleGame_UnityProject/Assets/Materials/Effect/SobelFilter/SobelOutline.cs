@@ -3,7 +3,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace VertexFragment
 {
-    [PostProcess(typeof(SobelOutlineRenderer), PostProcessEvent.BeforeStack, "SobelOutline")]
+    [PostProcess(typeof(SobelOutlineRenderer), PostProcessEvent.BeforeTransparent, "SobelOutline")]
     public class SobelOutline : PostProcessEffectSettings
     {
         [Tooltip("Thickness of the Sobel Outline")]

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int cameraPriority0 = 0;
     [Space]
     [Header("Camera XValue")]
-    [SerializeField] float activeCamValue;
+    [SerializeField] public float activeCamValue;
     [Space]
     [Header("Camera YValue")]
     [Range(-1, 1)]
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (playerActive)
         {
@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
                     cameras[i].GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
                 }
             }
-            miniMapVC.GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
+            
 
             //set y values
             //vc1
@@ -284,6 +284,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        //miniMapVC.GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
     }
 
     private void CameraLock()

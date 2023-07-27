@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
+    path: Assets/Scenes/Final Scenes/0 (Beginning maze).unity
+    guid: c029c897c4056494f8f3f294c5624cd5
+  - enabled: 0
     path: Assets/Scenes/Final Scenes/1 (Liam 7).unity
     guid: 34e2350260ac23142bbc12c2210fc448
   - enabled: 0
@@ -26,7 +29,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Final Scenes/Golf.unity
     guid: 7056eebd9b3ca7241a848fac85f6e706
-  - enabled: 1
-    path: Assets/Scenes/Final Scenes/0 (Beginning maze).unity
-    guid: c029c897c4056494f8f3f294c5624cd5
   m_configObjects: {}
