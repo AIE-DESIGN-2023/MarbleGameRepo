@@ -45,12 +45,15 @@ public class MarbleController : MonoBehaviour
     [Space]
     [Header("Marble Variables")]
     [SerializeField] float marbleMagnitude;
-    [SerializeField] float maxMagnitude;
-    [SerializeField] float offsetMagnitude;
     [Space]
-    [SerializeField] float pitchOffset;
+    [SerializeField] float volumeVariation;
+    [SerializeField] float volumneMax;
+    [SerializeField] float volumeOffset;
+    [Space]
     [SerializeField] float pitchVariation;
-    [SerializeField] float pitchMaxVariation;
+    [SerializeField] float pitchMax;
+    [SerializeField] float pitchOffset;
+    
     
 
     private void Start()
@@ -62,7 +65,8 @@ public class MarbleController : MonoBehaviour
     //update
     private void Update()
     {
-        VolumneCalculator();
+        MagnitudeCalculator();
+        PitchCalculator();
         GroundedController();
     }
 
@@ -77,8 +81,13 @@ public class MarbleController : MonoBehaviour
             }
 
             //apply marble magnitude
-            rollingSource.volume = marbleMagnitude - offsetMagnitude;
-            //rollingSource.pitch = pitchVariation+pitchOffset;
+            //divide marble magnitude by max
+            volumeVariation = (marbleMagnitude / volumneMax) - volumeOffset;
+            rollingSource.volume = volumeVariation;
+
+            //apply pitch modulation
+            pitchVariation = (marbleMagnitude / pitchMax) - pitchOffset;
+            rollingSource.pitch = pitchVariation + 1;
 
             //floor impact
             if (!hasGroundImpactPlayed)
@@ -88,7 +97,7 @@ public class MarbleController : MonoBehaviour
                 impactSource.clip = wallWoodImpacts[Random.Range(0, wallWoodImpacts.Count)];
 
                 //set volume
-                impactSource.volume = 1;
+                impactSource.volume = volumeVariation + 0.5f;
                 //play clip
                 impactSource.Play();
             }
@@ -103,6 +112,28 @@ public class MarbleController : MonoBehaviour
         {
             hasGroundImpactPlayed = false;
         }
+    }
+
+    private void PitchCalculator()
+    {
+
+    }
+
+    private void MagnitudeCalculator()
+    {
+        //get marble magnitude
+        marbleMagnitude = Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z);
+
+        //clamp marble magnitude
+        marbleMagnitude = Mathf.Clamp(marbleMagnitude, 0, volumneMax);
+    }
+
+    private void PlayImpact()
+    {
+        //set volume
+        impactSource.volume = volumeVariation;
+        //play clip
+        impactSource.Play();
     }
 
     //on collision enter
@@ -141,29 +172,6 @@ public class MarbleController : MonoBehaviour
         }
     }
 
-    private void PlayImpact()
-    {
-        //set volume
-        impactSource.volume = marbleMagnitude;
-        //play clip
-        impactSource.Play();
-    }
-
-    private void VolumneCalculator()
-    {
-        //get marble magnitude
-        marbleMagnitude = Mathf.Abs(GetComponent<Rigidbody>().velocity.x) + Mathf.Abs(GetComponent<Rigidbody>().velocity.y) + Mathf.Abs(GetComponent<Rigidbody>().velocity.z);
-
-        //clamp marble magnitude
-        marbleMagnitude = Mathf.Clamp(marbleMagnitude, 0, maxMagnitude);
-
-        //divide marble magnitude by max
-        marbleMagnitude = marbleMagnitude / maxMagnitude;
-
-        //calculate pitch variation
-        pitchVariation = (marbleMagnitude - 0.5f);
-    }
-
     private void OnCollisionExit(Collision collision)
     {
         //wood floor
@@ -174,4 +182,10 @@ public class MarbleController : MonoBehaviour
             groundImpactTimer = groundImpactWaitTime;
         }
     }
+
+    
+
+    
+
+    
 }

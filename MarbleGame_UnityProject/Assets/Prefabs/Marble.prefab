@@ -410,11 +410,12 @@ MonoBehaviour:
   WALLGLASSTAG: Wall Glass
   FLOORWOODTAG: Floor Wood
   marbleMagnitude: 0
-  maxMagnitude: 15
-  offsetMagnitude: 0.05
-  pitchOffset: 1
+  volumeVariation: 0
+  volumneMax: 15
+  volumeOffset: 0.05
   pitchVariation: 0
-  pitchMaxVariation: 0.3
+  pitchMax: 7.51
+  pitchOffset: 0.2
 --- !u!1 &8257234704883687079
 GameObject:
   m_ObjectHideFlags: 0

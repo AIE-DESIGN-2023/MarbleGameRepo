@@ -218,10 +218,7 @@ public class PlayerController : MonoBehaviour
             //get active cam value
             activeCamValue = cameras[activeCamIndex].GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value;
 
-            //get y value
-            y_mouseAxis = Input.GetAxis("Mouse Y");
-            y_tracker += y_mouseAxis;
-            y_tracker = Mathf.Clamp(y_tracker, -1f, 1f);
+            
 
             ///EQUALISE VALUES
             //set all values to be equal
@@ -233,6 +230,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
             miniMapVC.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>().m_XAxis.Value = activeCamValue;
+
+
+            //get y value
+            y_mouseAxis = Input.GetAxis("Mouse Y");
+            y_tracker += y_mouseAxis;
+            y_tracker = Mathf.Clamp(y_tracker, -1f, 1f);
 
             //set y values
             //vc1
