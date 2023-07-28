@@ -139,4 +139,16 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(6);
         DevToolsOff();
     }
+
+    public void LoadScene7()
+    {
+        SceneManager.LoadScene(7);
+        DevToolsOff();
+    }
+
+    public void LoadScene8()
+    {
+        SceneManager.LoadScene(8);
+        DevToolsOff();
+    }
 }

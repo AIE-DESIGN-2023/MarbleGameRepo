@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Final Scenes/Control Screen.unity
+    guid: c82d5071bfb829946bb251780ada7a6c
+  - enabled: 1
     path: Assets/Scenes/Final Scenes/0 (Beginning maze).unity
     guid: c029c897c4056494f8f3f294c5624cd5
   - enabled: 1
@@ -27,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/6 (Anthill).unity
     guid: 63e9bcd0c16cbbd43969eac88fb89aa2
   - enabled: 1
-    path: Assets/Scenes/Final Scenes/Golf.unity
+    path: Assets/Scenes/Final Scenes/7 (Golf).unity
     guid: 7056eebd9b3ca7241a848fac85f6e706
   m_configObjects: {}
