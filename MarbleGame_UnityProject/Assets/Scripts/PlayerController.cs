@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         currentRot = board.transform.rotation.eulerAngles;
 
         //get deathbox
-        deathBox = GetComponentInChildren<DeathBoxScript>().gameObject;
+        deathBox = GetComponentInChildren<FinalLevelDeathBox>().gameObject;
         resetLevelTimer = resetLevelTimeMax;
 
         //set resetboard variable
