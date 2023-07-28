@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour
     [Space]
     [SerializeField] GameObject devToolCanvas;
 
+    [Space]
+    [SerializeField] AudioSource select1;
+    [SerializeField] AudioSource select2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,12 +69,14 @@ public class GameController : MonoBehaviour
     private void DevToolsOn()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        select1.Play();
         devToolCanvas.SetActive(true);
     }
 
     private void DevToolsOff()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        select2.Play();
         devToolCanvas.SetActive(false);
     }
 
@@ -79,6 +85,9 @@ public class GameController : MonoBehaviour
         UIAnimator.SetTrigger("Transition Exit");
 
         yield return new WaitForSeconds(3f);
+
+        hasBeatenLevel = false;
+        reachedBeatenLevelHitbox = false;
 
         //load new level
         SceneManager.LoadScene(playerController.sceneIndex + 1);

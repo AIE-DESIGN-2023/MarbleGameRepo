@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Camera")]
     [SerializeField] public GameObject activeCam;
-    [SerializeField] int activeCamIndex;
+    [SerializeField] public int activeCamIndex;
     [Space]
     [Header("Camera ~ Lock")]
     [SerializeField] bool cameraLock;
@@ -128,7 +128,6 @@ public class PlayerController : MonoBehaviour
         currentRot = board.transform.rotation.eulerAngles;
 
         //get deathbox
-        deathBox = GetComponentInChildren<FinalLevelDeathBox>().gameObject;
         resetLevelTimer = resetLevelTimeMax;
 
         //set resetboard variable
@@ -194,10 +193,19 @@ public class PlayerController : MonoBehaviour
             resetLevelTimer = resetLevelTimeMax;
         }
 
+
         if (resetLevelTimer < 0)
         {
             resetLevelTimer = resetLevelTimeMax;
-            deathBox.GetComponent<DeathBoxScript>().StartCoroutine("RestartLevel");
+            if(sceneIndex != 8)
+            {
+                deathBox.GetComponent<DeathBoxScript>().StartCoroutine("RestartLevel");
+            }
+            else
+            {
+                deathBox.GetComponent<FinalLevelDeathBox>().StartCoroutine("RestartLevel");
+            }
+            
         }
     }
 

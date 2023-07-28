@@ -42,12 +42,11 @@ public class DeathBoxScript : MonoBehaviour
         playerController.marble.GetComponent<Rigidbody>().Sleep();
         playerController.marble.GetComponent<Rigidbody>().WakeUp();
 
-     
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.75f);
 
         playerController.gameController.GetComponent<GameController>().UIAnimator.SetTrigger("Death Enter");
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.25f);
 
         playerController.playerActive = true;
     }
